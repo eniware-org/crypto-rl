@@ -8,10 +8,11 @@ logging.basicConfig(level=logging.INFO, format='[%(asctime)s] %(message)s')
 LOGGER = logging.getLogger('crypto_rl_log')
 
 # ./recorder.py
-SNAPSHOT_RATE = 1.0  # For example, 0.25 = 4x per second
+SNAPSHOT_RATE = 60  # For example, 0.25 = 4x per second
 BASKET = [('BTC-USD', 'tBTCUSD'),
-          # ('ETH-USD', 'tETHUSD'),
-          # ('LTC-USD', 'tLTCUSD')
+           ('ETH-USD', 'tETHUSD'),
+           ('ADA-USD', 'tADAUSD'),
+           ('LINK-USD', 'tLINK:USD')
           ]
 
 # ./data_recorder/connector_components/client.py
@@ -26,13 +27,13 @@ INCLUDE_ORDERFLOW = True
 
 # ./data_recorder/database/database.py
 BATCH_SIZE = 100000
-RECORD_DATA = False
+RECORD_DATA = True
 MONGO_ENDPOINT = 'localhost'
-ARCTIC_NAME = 'crypto.tickstore'
+ARCTIC_NAME = 'Test2203_01'
 TIMEZONE = tz.utc
 
 # ./data_recorder/database/simulator.py
-SNAPSHOT_RATE_IN_MICROSECONDS = 1000000  # 1 second
+SNAPSHOT_RATE_IN_MICROSECONDS = 1000000*60  # 1 second
 
 # ./gym_trading/utils/broker.py
 MARKET_ORDER_FEE = 0.0020

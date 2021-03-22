@@ -3,6 +3,10 @@ import json
 from configurations import COINBASE_ENDPOINT, LOGGER
 from data_recorder.coinbase_connector.coinbase_orderbook import CoinbaseOrderBook
 from data_recorder.connector_components.client import Client
+from datetime import datetime as dt
+from configurations import TIMEZONE
+
+
 
 
 class CoinbaseClient(Client):
@@ -30,9 +34,82 @@ class CoinbaseClient(Client):
         -------
 
         """
+
+        curr_tim = dt.now(tz=TIMEZONE)
+        next_min = curr_tim.hour + 1
+
         super(CoinbaseClient, self).run()
         while True:
             msg = self.queue.get()
+
+            curr_tim = dt.now(tz=TIMEZONE)
+            curr_min = curr_tim.hour 
+
+            # Min = hour in this case
+
+            if curr_min == next_min == 0:
+                self.book.load_book()
+                print("RELOADING BOOK")
+                next_min = 2
+
+            if curr_min == next_min == 2:
+                self.book.load_book()
+                print("RELOADING BOOK")
+                next_min = 4
+
+            if curr_min == next_min == 4:
+                self.book.load_book()
+                print("RELOADING BOOK")
+                next_min = 6
+
+            if curr_min == next_min == 6:
+                self.book.load_book()
+                print("RELOADING BOOK")
+                next_min = 8
+
+            if curr_min == next_min == 8:
+                self.book.load_book()
+                print("RELOADING BOOK")
+                next_min = 10
+
+            if curr_min == next_min == 10:
+                self.book.load_book()
+                print("RELOADING BOOK")
+                next_min = 12
+
+            if curr_min == next_min == 12:
+                self.book.load_book()
+                print("RELOADING BOOK")
+                next_min = 14
+
+            if curr_min == next_min == 14:
+                self.book.load_book()
+                print("RELOADING BOOK")
+                next_min = 16
+
+            if curr_min == next_min == 16:
+                self.book.load_book()
+                print("RELOADING BOOK")
+                next_min = 18
+
+            if curr_min == next_min == 18:
+                self.book.load_book()
+                print("RELOADING BOOK")
+                next_min = 20
+
+            if curr_min == next_min == 20:
+                self.book.load_book()
+                print("RELOADING BOOK")
+                next_min = 22
+
+            if curr_min == next_min == 22:
+                self.book.load_book()
+                print("RELOADING BOOK")
+                next_min = 0
+
+
+
+
 
             if self.book.new_tick(msg) is False:
                 # Coinbase requires a REST call to GET the initial LOB snapshot
@@ -41,3 +118,4 @@ class CoinbaseClient(Client):
                 LOGGER.info('\n[%s - %s] ...going to try and reload the order '
                             'book\n' % (self.exchange.upper(), self.sym))
                 continue
+

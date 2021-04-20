@@ -29,10 +29,8 @@ class CoinbaseClient(Client):
     def run(self):
         """
         Handle incoming level 3 data on a separate thread or process.
-
         Returns
         -------
-
         """
 
         curr_tim = dt.now(tz=TIMEZONE)
@@ -50,62 +48,74 @@ class CoinbaseClient(Client):
             if curr_min == next_min == 0:
                 self.book.load_book()
                 print("RELOADING BOOK")
-                next_min = 2
+                next_min = 4
+                continue
 
             if curr_min == next_min == 2:
                 self.book.load_book()
                 print("RELOADING BOOK")
-                next_min = 4
+                next_min = 6
+                continue
 
             if curr_min == next_min == 4:
                 self.book.load_book()
                 print("RELOADING BOOK")
-                next_min = 6
+                next_min = 8
+                continue
 
             if curr_min == next_min == 6:
                 self.book.load_book()
                 print("RELOADING BOOK")
-                next_min = 8
+                next_min = 10
+                continue
 
             if curr_min == next_min == 8:
                 self.book.load_book()
                 print("RELOADING BOOK")
-                next_min = 10
+                next_min = 12
+                continue
 
             if curr_min == next_min == 10:
                 self.book.load_book()
                 print("RELOADING BOOK")
-                next_min = 12
+                next_min = 14
+                continue
 
             if curr_min == next_min == 12:
                 self.book.load_book()
                 print("RELOADING BOOK")
-                next_min = 14
+                next_min = 16
+                continue
 
             if curr_min == next_min == 14:
                 self.book.load_book()
                 print("RELOADING BOOK")
-                next_min = 16
+                next_min = 18
+                continue
 
             if curr_min == next_min == 16:
                 self.book.load_book()
                 print("RELOADING BOOK")
-                next_min = 18
+                next_min = 20
+                continue
 
             if curr_min == next_min == 18:
                 self.book.load_book()
                 print("RELOADING BOOK")
-                next_min = 20
+                next_min = 22
+                continue
 
             if curr_min == next_min == 20:
                 self.book.load_book()
                 print("RELOADING BOOK")
-                next_min = 22
+                next_min = 0
+                continue
 
             if curr_min == next_min == 22:
                 self.book.load_book()
                 print("RELOADING BOOK")
-                next_min = 0
+                next_min = 2
+                continue
 
 
 
@@ -118,4 +128,3 @@ class CoinbaseClient(Client):
                 LOGGER.info('\n[%s - %s] ...going to try and reload the order '
                             'book\n' % (self.exchange.upper(), self.sym))
                 continue
-

@@ -1,0 +1,6 @@
+{
+    "python.pythonPath": "/home/mario/eniware/crypto-rl/venv/bin/python",
+    "files.watcherExclude": {
+        "**/venv/**": true
+    }
+}

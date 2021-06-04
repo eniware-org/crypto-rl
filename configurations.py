@@ -11,8 +11,8 @@ LOGGER = logging.getLogger('crypto_rl_log')
 SNAPSHOT_RATE = 60  # For example, 0.25 = 4x per second
 BASKET = [('BTC-USD', 'tBTCUSD'),
            ('ETH-USD', 'tETHUSD'),
-           ('ADA-USD', 'tADAUSD'),
-           ('LINK-USD', 'tLINK:USD')
+          # ('ADA-USD', 'tADAUSD'),
+          # ('LINK-USD', 'tLINK:USD')
           ]
 
 # ./data_recorder/connector_components/client.py
